@@ -1,6 +1,7 @@
 import React from "react";
 import Radium from "radium";
 import "./Car.css";
+import styles from './Car.module.css';
 
 const Car = props => {
   const inputClases = ["input"];
@@ -19,7 +20,7 @@ const Car = props => {
   }
 
   return (
-    <div className="Car" style={style}>
+    <div className={styles.Car} style={style}>
       <h3>Car name: {props.name || "No name"}</h3>
       <p>Year: {props.year || "Non year"}</p>
       <input
