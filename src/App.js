@@ -79,7 +79,9 @@ class App extends Component {
         <button onClick={this.toggleCars.bind(this, "Changed!")}>
           Toggle Cars
         </button>
-        <div>{cars}</div>
+        <div style={{color: 'red',}}>
+          {cars}
+        </div>
       </div>
     );
   }
