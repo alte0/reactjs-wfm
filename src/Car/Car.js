@@ -36,9 +36,9 @@ class Car extends React.Component {
   // Жизненный цикл удаления
   render() {
     console.log("car render");
-    if (Math.random() > 0.7) {
-      throw new Error('Car random fail')
-    }
+    // if (Math.random() > 0.7) {
+    //   throw new Error('Car random fail')
+    // }
     const inputClases = ["input"];
 
     if (this.props.name !== "") {
