@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 import "./Car.css";
-import styles from './Car.module.css';
+import styles from './Car.module.scss';
 
 const Car = props => {
   const inputClases = ["input"];
