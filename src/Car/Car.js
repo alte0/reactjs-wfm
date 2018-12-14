@@ -3,6 +3,7 @@ import React from "react";
 import "./Car.css";
 import styles from "./Car.module.scss";
 import withClass from "../hoc/withClass";
+import propTypes from "prop-types";
 
 class Car extends React.Component {
   render() {
@@ -41,5 +42,11 @@ class Car extends React.Component {
   }
 }
 
+Car.propTypes = {
+  name: propTypes.string.isRequired,
+  year: propTypes.number,
+  onChangeName: propTypes.func,
+  onDelete: propTypes.func
+};
 // export default Radium(Car);
 export default withClass(Car, styles.Car);

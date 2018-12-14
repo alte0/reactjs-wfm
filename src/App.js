@@ -14,15 +14,15 @@ class App extends Component {
       cars: [
         {
           name: "Ford",
-          year: "2010"
+          year: 2010
         },
         {
           name: "Mazda",
-          year: "2002"
+          year: 2002
         },
         {
           name: "Lada",
-          year: "2015"
+          year: 2015
         }
       ],
       pageTitle: "React components",
