@@ -81,6 +81,7 @@ class App extends Component {
             <Car
               name={car.name}
               year={car.year}
+              index={index}
               // onChangeTitle={this.changeTitleHandler.bind(this, car.name)}
               onChangeName={event =>
                 this.onChangeName(event.target.value, index)

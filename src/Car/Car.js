@@ -6,6 +6,18 @@ import withClass from "../hoc/withClass";
 import propTypes from "prop-types";
 
 class Car extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.inputRef = React.createRef();
+  }
+  componentDidMount() {
+    console.log(this.inputRef);
+    console.log(this.inputRef.current);
+    if (this.props.index === 0) {
+      this.inputRef.current.focus();
+    }
+  }
   render() {
     console.log("car render");
     // if (Math.random() > 0.7) {
@@ -31,6 +43,7 @@ class Car extends React.Component {
         <h3>Car name: {this.props.name || "No name"}</h3>
         <p>Year: {this.props.year || "Non year"}</p>
         <input
+          ref={this.inputRef}
           type="text"
           onChange={this.props.onChangeName}
           value={this.props.name}
