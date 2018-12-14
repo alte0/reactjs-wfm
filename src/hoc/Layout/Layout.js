@@ -1,16 +1,14 @@
-import React from 'react';
-import styles from './Layout.module.css'
+import React from "react";
+import styles from "./Layout.module.css";
 
 class Layout extends React.Component {
-  render () {
+  render() {
     return (
-    <div className={styles.Layout}>
-      <main>
-        {this.props.children}
-      </main>
-    </div>
-    )
+      <div className={styles.Layout}>
+        <main>{this.props.children}</main>
+      </div>
+    );
   }
 }
 
-export default Layout
+export default Layout;
