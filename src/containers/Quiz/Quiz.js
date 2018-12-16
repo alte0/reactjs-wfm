@@ -39,8 +39,6 @@ class Quiz extends React.Component {
   onAnswerClickHandler = answerId => {
     if (this.state.answerState) {
       const key = Object.keys(this.state.answerState)[0];
-      console.log(this.state.answerState);
-      console.log(key);
       if (this.state.answerState[key] === "success") {
         return;
       }
