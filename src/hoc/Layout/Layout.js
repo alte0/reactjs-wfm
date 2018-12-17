@@ -1,22 +1,25 @@
 import React from "react";
 import styles from "./Layout.module.css";
-import MenuToggle from '../../component/Navigation/MenuToggle/MenuToggle'
+import MenuToggle from "../../component/Navigation/MenuToggle/MenuToggle";
+import Drawer from "../../component/Navigation/Drawer/Drawer";
 
 class Layout extends React.Component {
-  state= {
+  state = {
     menu: false
-  }
+  };
 
   toggleMenuHandler = () => {
     this.setState({
       menu: !this.state.menu
-    })
-  }
+    });
+  };
 
   render() {
     return (
       <div className={styles.Layout}>
-
+        <Drawer
+          isOpen={this.state.menu}
+        />
         <MenuToggle
           onToggle={this.toggleMenuHandler}
           isOpen={this.state.menu}
