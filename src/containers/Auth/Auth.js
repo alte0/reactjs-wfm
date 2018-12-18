@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styles from "./Auth.module.css";
 import Button from "../../component/UI/Button/Button";
+import Input from "../../component/UI/Input/Input";
 
 class Auth extends Component {
   state = {};
@@ -16,9 +17,14 @@ class Auth extends Component {
         <h1>Авторизация</h1>
 
         <form onSubmit={this.submitHandler} className={styles.AuthForm}>
-          <input type="text" />
-          <input type="text" />
-          <br/>
+          <Input 
+            label="Email"
+            />
+          <Input 
+            label="Пароль"
+            errorMessage={'fwef'}
+            />
+          
           <Button type="success" onClick={this.loginHandler}>
             Войти
           </Button>
