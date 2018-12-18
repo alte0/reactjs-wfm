@@ -4,12 +4,66 @@ import Button from "../../component/UI/Button/Button";
 import Input from "../../component/UI/Input/Input";
 
 class Auth extends Component {
-  state = {};
+  state = {
+    formControls: {
+      email: {
+        value: "",
+        type: "Email",
+        label: "Email",
+        errroMessage: "Введите корректный email",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          email: true
+        }
+      },
+      password: {
+        value: "",
+        type: "password",
+        label: "Пароль",
+        errroMessage: "Введите корректный пароль",
+        valid: false,
+        touched: false,
+        validation: {
+          required: true,
+          minLength: 6
+        }
+      }
+    }
+  };
+
   loginHandler = () => {};
+
   registerHandler = () => {};
+
   submitHandler = evt => {
     evt.preventDefault();
   };
+
+  onChangeHandler = (event, controlName) => {
+    console.log(`${controlName}: `, event.target.value);
+  };
+
+  renderInputs() {
+    return Object.keys(this.state.formControls).map((controlName, index) => {
+      const control = this.state.formControls[controlName];
+      return (
+        <Input
+          key={controlName + index}
+          type={control.type}
+          value={control.value}
+          valid={control.valid}
+          touched={control.touched}
+          label={control.label}
+          shouldValidate={!!control.validation}
+          errorMessage={control.errorMessage}
+          // eslint-disable-next-line no-restricted-globals
+          onChange={() => this.onChangeHandler(event, controlName)}
+        />
+      );
+    });
+  }
 
   render() {
     return (
@@ -17,13 +71,8 @@ class Auth extends Component {
         <h1>Авторизация</h1>
 
         <form onSubmit={this.submitHandler} className={styles.AuthForm}>
-          <Input 
-            label="Email"
-            />
-          <Input 
-            label="Пароль"
-            errorMessage={'fwef'}
-            />
+
+          {this.renderInputs()}
           
           <Button type="success" onClick={this.loginHandler}>
             Войти
