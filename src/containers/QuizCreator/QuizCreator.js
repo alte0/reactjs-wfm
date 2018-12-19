@@ -40,6 +40,7 @@ function createFormControls() {
 class QuizCreator extends Component {
   state = {
     quiz: [],
+    isFormValid: false,
     rightAnswerId: 1,
     formControls: createFormControls()
   };
@@ -47,10 +48,46 @@ class QuizCreator extends Component {
   submithandler(evt) {
     evt.preventDefault();
   }
-  addQuestionHandler = (evt) => {
+  addQuestionHandler = evt => {
     evt.preventDefault();
+
+    const quiz = this.state.quiz.concat();
+    const index = quiz.length + 1;
+
+    const {
+      quiestion,
+      option1,
+      option2,
+      option3,
+      option4
+    } = this.state.formControls;
+
+    const questionItem = {
+      quiestion: quiestion.value,
+      id: index,
+      rightAnswerId: this.state.rightAnswerId,
+      answers: [
+        { text: option1.value, id: option1.id },
+        { text: option2.value, id: option2.id },
+        { text: option3.value, id: option3.id },
+        { text: option4.value, id: option4.id }
+      ]
+    };
+
+    quiz.push(questionItem);
+
+    this.setState({
+      quiz,
+      isFormValid: false,
+      rightAnswerId: 1,
+      formControls: createFormControls()
+    });
   };
-  createQuizHandler = () => {};
+
+  createQuizHandler = (evt) => {
+    evt.preventDefault();
+    console.log(this.state.quiz);
+  };
 
   onChangeHandler = (value, controlName) => {
     const formControls = { ...this.state.formControls };
