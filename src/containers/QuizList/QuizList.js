@@ -2,14 +2,16 @@ import React, { Component } from "react";
 import styles from "./QuizList.module.css";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Loader from "../../component/UI/Loader/Loader";
 
 class QuizList extends Component {
   state = {
-    quizes: []
+    quizes: [],
+    loading: true
   };
 
   renderQuizList() {
-    return this.state.quizes.map((quiz) => {
+    return this.state.quizes.map(quiz => {
       return (
         <li key={quiz.id}>
           <NavLink to={"/quiz/" + quiz.id}>{quiz.name}</NavLink>
@@ -30,12 +32,13 @@ class QuizList extends Component {
         quizes.push({
           id: key,
           name: `Тест ${index + 1}`
-        })
+        });
       });
 
       this.setState({
-        quizes
-      })
+        quizes,
+        loading: false
+      });
     } catch (e) {
       console.log(e);
     }
@@ -47,7 +50,8 @@ class QuizList extends Component {
         <div>
           <h1>Список тестов</h1>
 
-          <ul>{this.renderQuizList()}</ul>
+          {this.state.loading ? <Loader /> : <ul>{this.renderQuizList()}</ul>}
+          
         </div>
       </div>
     );
