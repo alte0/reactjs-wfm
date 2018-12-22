@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Finished.module.css";
 import Button from "../UI/Button/Button";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Finished = props => {
   const successCount = Object.keys(props.results).reduce((total, key) => {
@@ -11,7 +11,7 @@ const Finished = props => {
 
     return total;
   }, 0);
-
+  
   return (
     <div className={styles.Finished}>
       <ul>
@@ -25,7 +25,7 @@ const Finished = props => {
             <li key={index}>
               <strong>{index + 1}.</strong>
               &nbsp;
-              {quizItem.question}
+              {quizItem.quiestion}
               <i className={cls.join(" ")} />
             </li>
           );
@@ -35,14 +35,11 @@ const Finished = props => {
         Правильно {successCount} из {props.quiz.length}
       </p>
       <div>
-        <Button 
-          onClick={props.onRetry}
-          type="primary"
-          >Повторить</Button>
-        <Link to='/'>
-          <Button 
-            type="success"
-            >Перейти в список тестов</Button>
+        <Button onClick={props.onRetry} type="primary">
+          Повторить
+        </Button>
+        <Link to="/">
+          <Button type="success">Перейти в список тестов</Button>
         </Link>
       </div>
     </div>
