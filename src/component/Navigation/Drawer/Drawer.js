@@ -33,7 +33,6 @@ class Drawer extends React.Component {
     }
 
     const links = [{ to: "/", label: "Список", exact: true }];
-    console.log("AUth", this.props.isAuthenticated);
 
     if (this.props.isAuthenticated) {
       links.push({ to: "/quiz-creator", label: "Создасть тест", exact: false });
